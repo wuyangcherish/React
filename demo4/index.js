@@ -15,7 +15,6 @@ class ImgCon extends component {
 				</ul>
 				<div></div>
 			</div>
-			
 		)
 	}
 }

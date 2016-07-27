@@ -1,0 +1,17 @@
+.pic{
+	width:100px;
+	height:100px;
+	vertical-align: middle;
+	display: inline-block;
+}
+h1{
+	font-size:20px;
+	color:#cc0000;
+	display: inline-block;
+	vertical-align: middle;
+}
+.header{
+	width:800px;
+	height:100px;
+	margin:0 auto;
+}
