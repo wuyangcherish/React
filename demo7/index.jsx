@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import {Router, Route, IndexRoute, Link, IndexLink, hashHistory} from 'react-router';
-import {createHistory, useBasename} from 'history';
+import {Router, Route, IndexRoute, Link, IndexLink, useRouterHistory} from 'react-router';
+import {browserHistory, hasHistory} from 'react-router';
+import {createHashHistory} from 'history';
 
 const ACTIVE = {color:'#cc0000'}
 
@@ -57,18 +58,19 @@ class About extends Component {
 	}
 }
 
-const history = useBasename(createHistory) ({
-	basename:'/active-links'
+const appHistory = useRouterHistory(createHashHistory)({
+	queryKey: false
 })
 
+
 render((
-	<Router history={history}>
+	<Router history={appHistory}>
 	    <Route path="/" component={App}>
 		      <IndexRoute component={Index}/>
 		      <Route path="/about" component={About}/>
 		      <Route path="users" component={Users}>
 			        <IndexRoute component={UsersIndex}/>
-			        <Route path="/:name" component={User}/>
+			        <Route path="/:id" component={User}/>
 		      </Route>
 	    </Route>
   </Router>
