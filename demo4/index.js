@@ -2,21 +2,18 @@ import React, {Component} from 'react';
 
 import ReactDOM from 'react-dom';
 
-import "";
+import "./src/index.css"
 
-class ImgCon extends component {
+import dogPic from "./imgs/2.jpg";
+
+class ImgCon extends Component {
 	render() {
 		return (
 			<div>
-				<div></div>
-				<ul>
-					<li></li>
-					<li></li>
-				</ul>
-				<div></div>
+				<img src={dogPic} className='pic' />
 			</div>
 		)
 	}
 }
 
-ReactDom.render(<ImgCon/>, document.getElementById("pic"));
+ReactDOM.render(<ImgCon/>, document.getElementById("pic"));

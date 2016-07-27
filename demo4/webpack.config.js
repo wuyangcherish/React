@@ -8,14 +8,15 @@ module.exports = {
 	entry: path.resolve(__dirname, 'index.js'),
 	output:{
 		path: path.resolve(__dirname, 'build'),
-		filename:'bundle.js'
+		filename:'bundle.js',
+		publicPath:'build/'
 	},
 	module: {
 		loaders:[
 			{test: /\.js[x]?$/, exclude: /node_modules/,
 			 loader: 'babel-loader?presets[]=es2015&presets[]=react' },
 			{test:/\.css$/,loader:'style!css'},
-			{test:/\.(png|jpg)$/, loader:'url-loader?limit=25000'}
+			{test:/\.(png|jpg)$/, loader:'url-loader?limit=10000'}
 		],
 		noParse: [pathToReact]
 	},
@@ -23,9 +24,4 @@ module.exports = {
 		extension: ['','.js','.json','.jsx','.css']
 	},
 	devtool:'cheap-module-source-map',
-	// devServer:{
-	// 	hot:true,
-	// 	inline: true,
-	// 	contentBase: "build/"
-	// }
 };
