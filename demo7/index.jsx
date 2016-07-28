@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {Router, Route, IndexRoute, Link, IndexLink, useRouterHistory} from 'react-router';
 import {browserHistory, hasHistory} from 'react-router';
-import {createHashHistory} from 'history';
+import {createHistory} from 'history';
 
 const ACTIVE = {color:'#cc0000'}
 
@@ -58,8 +58,7 @@ class About extends Component {
 	}
 }
 
-const appHistory = useRouterHistory(createHashHistory)({
-	queryKey: false
+const appHistory = useRouterHistory(createHistory)({
 })
 
 

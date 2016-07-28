@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import {Router, Route, IndexRoute, Link, IndexLink, hashHistory} from 'react-router';
+import {Router, Route, IndexRoute, Link, IndexLink} from 'react-router';
 
 class App extends Component{
 	render() {
