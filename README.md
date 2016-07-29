@@ -7,6 +7,7 @@
 2. [react-router 2.0.x 版本变化](https://github.com/reactjs/react-router/blob/master/upgrade-guides/v2.0.0.md#using-history-with-router)
 3. [阮一峰的react-router](http://www.ruanyifeng.com/blog/2016/05/react_router.html)
 4. [React 教程合集](http://react-china.org/c/jiao-cheng)
+5. [Promise 迷你书](http://liubin.org/promises-book)
 
 
 #### 重点
