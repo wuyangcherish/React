@@ -12,7 +12,9 @@ class NavBoxCon extends Component {
 		let boxData = this.props.data;  {/*如果有的话就是个数组，没有的话为undefined*/}
 		let boxLi = boxData.map(function(data){			
 			return(
-				<li key={data.id} className="box-li"><a href="#">{data}</a></li>
+				<li key={data.id} className="box-li">
+					<a href="#">{data}</a>
+				</li>
 			)
 		})
 		return (
@@ -26,30 +28,47 @@ export default class NavBar extends Component {
 	constructor(){
 		super();
 		this.state={
-			drop: false
+			drop:false
 		}
 	}
 	handlerMouseOver(e){
-		console.log()
+		this.setState({
+			drop:true
+		})
 	}
 
 	handlerMouseOut(e) {
-		this.setState({
-			drop:false
-		})
+
 	}
 
 	render() {
 		let data = Data.navData;
-		var navBarLi = data.map(function(data,index){
-			return(
-				<li key={data.id} className="nav-li" 
-				onMouseOver={this.handlerMouseOver.bind(this,index)}
-				onMouseOut={this.handlerMouseOut.bind(this)}>
-					<a href="#" className="nav-tit" key={data.id}>{data.navTit}</a>
+		var items = data.map(function(item, index){
+			if(item.children){
+				let children = item.children.map(function(child){
+					return (
+						<li className='box-li'>
+							<a href="#">{child.text}</a>
+						</li>
+					)
+				});
+
+				var dropBox = (
+					<ul className="nav-box-wrap" data-drop='false' ref='dropbox'>
+						{children}
+					</ul>
+				)
+
+			}
+
+			return (
+				<li className="nav-li" key={item.id}
+				onMouseOver={this.handlerMouseOver.bind(this)}>
+					<a href={item.href} className="nav-tit">{item.text}</a>
 					{(()=>{
-						if(data.navBox){
-							return <NavBoxCon data={data.navBox} ref="dropbox" key={data.id} />
+						if(this.state.drop){
+							console.log(this.state.drop)
+							{dropBox}
 						}
 					})()}
 				</li>
@@ -57,7 +76,9 @@ export default class NavBar extends Component {
 		},this)
 		return (
 			<div>
-				<ul className="clearfix" key={data.id}>{navBarLi}</ul>
+				<ul className="clearfix" key={data.id}>
+					{items}
+				</ul>
 			</div>
 		)
 	}
