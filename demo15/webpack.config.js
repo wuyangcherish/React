@@ -10,8 +10,7 @@ var devConfig = {
 	},
 	module:{
 		loaders:[
-			{test:/\.js[x]?$/, loader:'babel-loader', exclude:/node_modules/, include:__dirname},
-			{test:/\.css$/, loader:'style!css'}
+			{test:/\.js[x]?$/, loader:'babel-loader', exclude:/node_modules/, include:__dirname}
 		]
 	}
 }
