@@ -20,7 +20,10 @@
 	* [版本写法对照表](https://github.com/reactjs/react-router/blob/832c42946c874fe56ffde0066b1088054311cb98/CHANGES.md)  
 2. super(props)有什么作用：
 	* 这个是用来调用父类的构造函数，子类必须在constructor方法中调用 super()， 否则构建实例会报错，这是因为子类没有自己的this对象。而是继承父类的this,所以没有super(),就没有this.
-3. 有关ajax 在es6中的写法和在5中的区别:
+3. [无法识别react 的语法](http://stackoverflow.com/questions/33460420/babel-loader-jsx-syntaxerror-unexpected-token)
+	* 或者说是以来都安装好了，但是还是无法识别，其原因在于忘记写<code>.babelrc 文件了</code>
+
+4. 有关ajax 在es6中的写法和在5中的区别:
 	<pre>
 	es5:
 		Foo.prototype.ajax=function(){
@@ -45,8 +48,9 @@
 
 	在demo11中。es5中的this 指向：es6代码中this指向： UserGist
 
-4. 有关<code>isMounted()</code>这个属性在es6 下面报错的问题
+5. 有关<code>isMounted()</code>这个属性在es6 下面报错的问题
 	* [官网](https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html) 是这么说的
+
 	
 
 
