@@ -1,0 +1,64 @@
+*{
+    padding:0;
+    margin:0;
+}
+.share{
+    position: fixed;
+    top:300px;
+    right:0;
+}
+.share-content{
+    width:200px;
+    background-color:bisque;
+    position: absolute;
+    top:0px;
+    left:0px;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.share li{
+    list-style:none;
+    width:90%;
+    padding:0 5%;
+    line-height:30px;
+    height:30px;
+}
+.share li a{
+    color:#fff;
+    text-decoration: none;
+}
+.btn{
+    position: absolute;
+    top:30px;
+    left:-30px;
+    width:30px;
+    height:50px;
+    text-align: center;
+    background-color: #9dd;
+    padding:5px 0;
+    border-radius:5px 0px 0px 5px;
+    cursor: pointer;
+}
+
+.share-content.active{
+    left:-200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
