@@ -19,7 +19,9 @@
 15. 将焦点放到input上
 16. 导航栏【配置貌似出现了一些问题】
 17. 远程获取数据
-18. react-router demo
+18. react-router demo1 --最基本的路由
+19. react-router demo2 --IndexRoute + 嵌套路由
+20. react-router demo3 --Form表单提交
 
 
 #### 资料
@@ -47,12 +49,13 @@
 
 这个是用来调用父类的构造函数，子类必须在constructor方法中调用 super()， 否则构建实例会报错，这是因为子类没有自己的this对象。而是继承父类的this,所以没有super(),就没有this.
 
-####### [无法识别react 的语法](http://stackoverflow.com/questions/33460420/babel-loader-jsx-syntaxerror-unexpected-token)
+###### [无法识别react 的语法](http://stackoverflow.com/questions/33460420/babel-loader-jsx-syntaxerror-unexpected-token)
 
 或者说是依赖都安装好了，但是还是无法识别，其原因在于忘记写<code>.babelrc 文件了</code>
 
 ###### 有关ajax 在es6中的写法和在5中的区别:
-	<pre>
+
+```
 	es5:
 		Foo.prototype.ajax=function(){
 			$.get('http://foo/bar.com', function(res){
@@ -60,8 +63,9 @@
 				this.otherMethod();
 			}.bind(this))
 		}
-	</pre>
-	<pre>
+```
+
+```
 	es6:
 		class Foo {
 			ajax() {
@@ -72,6 +76,7 @@
 			}
 		}
 	</pre>
+```
 
 
 在demo11中。es5中的this 指向：es6代码中this指向： UserGist
@@ -104,6 +109,8 @@ Data.tabData.map(function(item,index){
 
 Stack Overflow 答案：[函数undefined](http://stackoverflow.com/questions/29549375/react-0-13-class-method-undefined)
 
+#### 笔记
+
 ###### Virtual DOM 算法
 
 实现：
@@ -113,8 +120,51 @@ Stack Overflow 答案：[函数undefined](http://stackoverflow.com/questions/295
 
 实现的算法是： diff 算法。实现复杂度为：O(n^3), 但是在前端中，很少有跨层级移动DOM 元素，所以 Virtual DOM 只会对同一个层级的 DOM 元素进行比较，这样话算法复杂度就变为了O(n).
 	
+	
+###### React-Router 
 
 
+v0.1 版本和 v0.2 版本的区别导致的问题，因为这两个版本的写法用法差异性较大，所以用的时候要注意。 贴着连接以后好找[uprade-guides](https://github.com/reactjs/react-router/tree/master/upgrade-guides)，上面资料2 也有写。
+
+``{this.props.children}`` 这个的用法：这个是用来显示路由下面的内容的，比如
 
 
+```
+    <ul>
+	    <li><Link to='/about'>About</Link></li>
+	    <li><Link to='/inbox'>Inbox</Link></li>
+        <li><Link to='/inbox/messages/23'>Message/23</Link></li>
+    </ul>
+	{this.props.children}
+```
 
+上面的``{this.props.children}`` 就是用来显示路由 ``/About, /Inbox`` 所对应的内容的， ``/Inbox/message/23`` 对应的是一个子路由，它是在页面/Inbox 的基础上面分出来的路由。在``/Inbox`` 所对应的组件下面摁钉也有一个相同的``{this.props.children}``来显示该子路由组件, 如下：
+
+```
+    class Inbox extends Component{
+        render(){
+            return(
+                <h1>Inbox Content</h1>
+                {this.props.children || "Hello Inbox"}
+               )
+        }
+    }
+```
+当然这个``"Hello Inbox"`` 的这一项内容可以没的
+
+还有一个注意的是 ``/inbox/message/23`` 对应的路由应该是 ``/inbox/message/:id``
+
+因为一开始对应的路由没有写，所以可以用 ``<IndexRoute component={}>`` 来对应路由 ``'/'``
+
+对于选中连接的样式可以直接使用 ``activeStyle={{}}`` 或者 ``activeClassName`` 的形式定义。而不需要自己判断是否选中
+
+但是像上述的这种情况不适用与连接到根路由的情况，因为他会使得``activeStyle``和``activeClassName``失效，它会匹配任何的子路由，所以会一高亮,这个时候就需要用``IndexLink``这个精确匹配来实现.或者加上 ``onlyActiveOnIndex={true}`` 这个属性
+
+``hashHistory`` 的是通过 URL 的hash 部分（#）来进行切换的。url 的形式如下所示：
+
+![images](http://7xlqb6.com1.z0.glb.clouddn.com/react-router-history.png)
+ 
+ 
+而 ``browserHistory`` 则没有上面的（#）它显示出来的是正常的页面跳转链接，如下图所示：
+
+![images](http://7xlqb6.com1.z0.glb.clouddn.com/react-router-browserHistory.png)
