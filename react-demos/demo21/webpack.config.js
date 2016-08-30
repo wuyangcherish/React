@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var openBrowserWebpackPlugin = require('open-browser-webpack-plugin');
 
 var path = require('path');
 
@@ -15,7 +16,7 @@ module.exports = {
 		publicPath:'/static/'
 	},
 	plugins:[
-		new webpack.HotModuleReplacementPlugin()，
+		new webpack.HotModuleReplacementPlugin(),
 		new openBrowserWebpackPlugin({ url: 'http://localhost:8080' })
 	],
 	module:{
@@ -26,7 +27,7 @@ module.exports = {
 		]
 	},
 	resolve:{
-		extensions:['','.js','.jsx','.json','css']
+		extensions:['','.js','.jsx','.json','.css']
 	},
 	devtool:'cheap-module-source-map',
 

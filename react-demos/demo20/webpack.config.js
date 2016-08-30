@@ -15,8 +15,7 @@ module.exports = {
 		publicPath:'/static/'
 	},
 	plugins:[
-		new webpack.HotModuleReplacementPlugin()，
-		new openBrowserWebpackPlugin({ url: 'http://localhost:8080' })
+		new webpack.HotModuleReplacementPlugin()
 	],
 	module:{
 		loaders:[
