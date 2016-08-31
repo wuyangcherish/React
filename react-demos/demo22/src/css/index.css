@@ -1,0 +1,80 @@
+*{
+	padding:0;
+	margin:0;
+}
+a {text-decoration: none;}
+li{list-style: none;}
+.container{
+	width:600px;
+	border:1px solid #ccc;
+	margin:20px;
+}
+
+.comment-wrap{
+	margin:20px;
+}
+.comment-wrap li{
+	margin:5px 0px;
+}
+.comment-wrap .pic-wrap{
+	width:100px;
+	min-height:30px;
+/*	background: red;*/
+	display:inline-block;
+}
+.comment-wrap .pic-wrap img{
+	width:50px;
+	height:50px;
+	border-radius:5px;
+	margin-left:25px;
+	vertical-align: middle;
+}
+.comment-wrap .comment{
+	width:300px;
+	display: inline-block;
+}
+.comment-wrap .comment .username{
+	font-size:16px;
+	color:#cc0000;
+	/*line-height:20px;*/
+
+}
+.comment-wrap .comment .content{
+	font-size:12px;
+	line-height:14px;
+}
+
+/*评论框*/
+
+.write-wrap{
+	width:500px;
+
+}
+
+.write-wrap .write-con{
+	width:300px;
+	height:100px;
+}
+
+.write-wrap .sub-btn{
+	width:50px;
+	height:30px;
+	border-style:none;
+	display: block;
+	margin-left:253px;
+	background: #cc0000;
+	color:#fff;
+	border-radius:3px;
+	outline: none;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
