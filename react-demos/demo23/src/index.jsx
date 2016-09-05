@@ -1,9 +1,22 @@
 
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
-import {storage} from './data';
 
 import './css/index';
+
+var firebase = require('firebase');
+
+// console.log("firebase是：",firebase)
+
+firebase.initializeApp({
+  databaseURL: "https://test-6ba90.firebaseio.com",
+  serviceAccount: "path/to/firebase.json"
+});
+
+var db = firebase.database();
+var ref = db.ref("comments/");
+
+
 
 class CommentsContents extends Component {
 	constructor(props){
@@ -31,7 +44,11 @@ class CommentList extends Component{
 			)
 		}else{
 			let res = this.props.data;
-			var list = res.map(function(item,index){
+			let result = [];
+			for(var i in res){
+				result.push(res[i])
+			}
+			var list = result.map(function(item,index){
 				return(
 					<li key={index}>
 						<div className="pic-wrap">
@@ -60,9 +77,10 @@ class CommentsBox extends Component{
 
 		event.preventDefault();
 		const userImg = this.refs.userImg.src;
-		const userName = this.refs.userName.innerText;
-		const commentContent = event.target.elements[0].value;
-		if(commentContent == ''){
+		const userName = event.target.elements[0].value;
+		const commentContent = event.target.elements[1].value;
+
+		if(commentContent === '' || userName ===''){
 			console.log("没写东西评啥评~");
 			return;
 		}
@@ -78,16 +96,18 @@ class CommentsBox extends Component{
 	render(){
 		return(
 			<div className="write-wrap">
-				<form onSubmit={this.handleSubmit.bind(this)}>
+				<form onSubmit={this.handleSubmit.bind(this)} className="form-con">
 					<div className="user-info">
 						<span className="user-pic">
 							<img src="http://7xlqb6.com1.z0.glb.clouddn.com/user.jpg" ref="userImg"/>
 						</span>
-						<span className="user-name" ref="userName">Ray</span>
+						<input type="text" className="user-name" ref="userName" placeholder="Ray"/>
+					</div>
+					<div className="text-con">
+						<textarea className="write-con"></textarea>
+						<input type="submit" value="提交" className='sub-btn'/>
 					</div>
 					
-					<textarea className="write-con"></textarea>
-					<input type="submit" value="提交" className='sub-btn'/>
 				</form>
 			</div>
 		)
@@ -99,18 +119,40 @@ class Comments extends Component {
 	constructor(){
 		super();
 		this.state={
-			indeboxData: storage.get().comments
+			indeboxData:null
 		}
 	}
-	onDataChanged(data){
-		this.state.indeboxData.unshift(data);
-		var nowData = this.state.indeboxData;
-		//存放到localStorage中
-		storage.save(nowData)
-		this.setState({
-			indeboxData: nowData
-		});
 
+	componentDidMount() {
+		var _that = this;
+	 	ref.once('value', function(snapshot){
+	 		// console.log(snapshot.val());
+	 		_that.setState({
+	 			indeboxData: snapshot.val()
+	 		})
+	 	})
+	}
+
+	getCommentsDate(){
+		var _that = this;
+		ref.on('value', function(snapshot){
+			_that.setState({
+	 			indeboxData: snapshot.val()
+	 		})
+		})
+	}
+
+	writeCommentsData(data){
+		firebase.database().ref('comments/').push({
+			username:data.username,
+			imgSrc:data.imgSrc,
+			text:data.text
+		})
+	}
+	onDataChanged(data){
+		// console.log("已评论");
+		this.getCommentsDate();
+		this.writeCommentsData(data);
 	}
 
 	render(){

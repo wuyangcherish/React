@@ -7,8 +7,11 @@
 3. [阮一峰的react-router](http://www.ruanyifeng.com/blog/2016/05/react_router.html)
 4. [React 教程合集](http://react-china.org/c/jiao-cheng)
 5. [Promise 迷你书](http://liubin.org/promises-book)
+6. [isomorphic-fetch的用法](https://github.com/matthew-andrews/isomorphic-fetch)
 6. [React 简介与原理](http://anjia.github.io/2015/07/24/fe_react)
 7. [怎么样更好的理解虚拟DOM](http://www.zhihu.com/question/29504639/answer/44680878)
+8. [React Native ES5 和 ES6 写法对照](http://bbs.reactnative.cn/topic/15/react-react-native-%E7%9A%84es5-es6%E5%86%99%E6%B3%95%E5%AF%B9%E7%85%A7%E8%A1%A8)
+9. [localStorage --setItem](https://developer.mozilla.org/zh-CN/docs/Web/API/Storage/setItem)
 
 
 #### 重点
@@ -99,7 +102,6 @@ Stack Overflow 答案：[函数undefined](http://stackoverflow.com/questions/295
 	
 ###### React-Router 
 
-
 v0.1 版本和 v0.2 版本的区别导致的问题，因为这两个版本的写法用法差异性较大，所以用的时候要注意。 贴着连接以后好找[uprade-guides](https://github.com/reactjs/react-router/tree/master/upgrade-guides)，上面资料2 也有写。
 
 ``{this.props.children}`` 这个的用法：这个是用来显示路由下面的内容的，比如
@@ -144,3 +146,10 @@ v0.1 版本和 v0.2 版本的区别导致的问题，因为这两个版本的写
 而 ``browserHistory`` 则没有上面的（#）它显示出来的是正常的页面跳转链接，如下图所示：
 
 ![images](http://7xlqb6.com1.z0.glb.clouddn.com/react-router-browserHistory.png)
+
+
+###### localStorage
+
+在demo22 的评论demo 里面用到了 localStorage的getItem和setItem,因为还没搞到数据库那些东西，所以暂时先用这个代替下。
+
+

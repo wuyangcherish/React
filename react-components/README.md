@@ -31,6 +31,28 @@
 gitHub 链接地址:[react-hot-boilerplate](https://github.com/gaearon/react-hot-boilerplate)
 
 
+#####  nav-test
+
+一个导航栏的demo
+
+#####  slide-share
+
+右侧分享栏
+
+##### slider
+
+轮播demo
+
+##### tab-switch
+
+tab切换demo
+
+##### 留言板的demo
+
+见react-demos/demo22
+
+
+
 
 
 

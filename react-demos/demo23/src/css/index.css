@@ -47,30 +47,37 @@ li{list-style: none;}
 /*评论框*/
 
 .write-wrap{
-	width:500px;
-
+	width:600px;
+}
+.write-wrap .form-con{
+	width:600px;
 }
 .write-wrap .user-info{
 	display: inline-block;
-	text-align: center;
 	margin:20px;
+	width:150px;
+	vertical-align: middle;
 }
-
+.write-wrap .text-con{
+	display: inline-block;
+	width:400px;
+}
 .write-wrap .user-pic{
 	width:30px;
 	height:30px;
 	border-radius: 30px;
-	display: block;
+	display: inline-block;
 }
 .write-wrap .user-name {
 	line-height:30px;
+	width: 100px;
+    margin-left: 10px;
 }
 .write-wrap .user-pic img{
 	width:100%;
 	height:100%;
 	vertical-align: middle;
 }
-
 .write-wrap .write-con{
 	width:300px;
 	height:100px;
