@@ -3,7 +3,7 @@
 1. 输出字符串
 2. 渲染列表 + css
 3. 加载组件
-4. 输出图片【图片小鱼10000的时候输出Base64位编码的图】
+4. 输出图片【图片小于10000的时候输出Base64位编码的图】
 5. <del style="color:#9dd;">react-router</del>
 6. header demo
 7. <del style="color:#9dd;">同demo5</del>
@@ -23,6 +23,7 @@
 21. react-router demo4 --fetch 数据
 22. react 评论框 + localStorage
 23. react 评论框 + fireBase
+24. react 动画
 
 #### demo22
 
@@ -88,7 +89,8 @@
 
 当有新的评论时候，肯定是要触发一个事件，然后将元素显示出来并且保存到数据库中了~  保存到数据库中可以直接使用上面的push 方法。要显示到组件上，那么势必要使用``setState`` 来改变原本的数据。所以代码如下：
 
-```ref.on('value', function(snapshot){
+```
+    ref.on('value', function(snapshot){
 			_that.setState({
 	 			indeboxData: snapshot.val()
 	 		})
@@ -100,5 +102,37 @@
 这下子就实现了简单的试试数据更新。
 
 PS: 还有很多没有学习到，后面继续~
+
+
+#### demo24
+
+说下动画的东东
+
+首先得安装一个依赖 ``react-addons-css-transition-group`` 然后在该文件中引入
+
+```
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+or 
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+```
+
+动画的组件写法是：
+
+```
+<ReactCSSTransitionGroup transitionName='example' 
+	transitionEnterTimeout={500} transitionLeaveTimeout={300}
+    transitionAppear={true} transitionAppearTimeout={500}
+	component="ul" className="lists">
+	{items}
+</ReactCSSTransitionGroup>
+ ```
+ 
+像这样~ 应该注意的是：
+
+1. transitionName -> 就是后面css 的类名
+2. 默认情况下 ``ReactCSSTransitionGroup`` 是一个``span`` 标签。所以如果想变化的话，需加入``component="你想让它成为的标签"``
+3. 里面只能写你需要变化的组件部分。如果有嵌套，将无法实现``enter leave``的动画，但是``appear``的动画是可是实现的，具体原因。再看看~
+4. 默认情况下 ``transitionAppear`` 为 false 所以要先设置为true 才可以。
+5. ``ReactCSSTransitionGroup`` 的自己一定要有``key`` 这个值
 
 

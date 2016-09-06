@@ -15,6 +15,11 @@ li{list-style: none;}
 }
 .comment-wrap li{
 	margin:5px 0px;
+	padding:5px 0px;
+}
+.comment-wrap li:hover{
+	background:  #e5ffff;
+	transition: background 0.2s ease-in;
 }
 .comment-wrap .pic-wrap{
 	width:100px;
@@ -98,6 +103,22 @@ li{list-style: none;}
     vertical-align: middle;
 }
 
+/*动画*/
+.comments-lists-appear{
+	opacity: 0.01;
+}
+.comments-lists-appear.comments-appear-active{
+	opacity: 1;
+	transition:opacity 500ms ease-in;
+	
+}
+.comments-lists-enter{
+	opacity: 0.01;
+}
+.comments-lists-enter.comments-enter-active{
+	transition:opacity 0.5s ease-in;
+	opacity: 1;
+}
 
 
 

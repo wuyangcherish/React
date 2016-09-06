@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom';
 
 import './css/index';
 
-var firebase = require('firebase');
+import firebase from 'firebase';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 // console.log("firebase是：",firebase)
 
@@ -63,7 +64,12 @@ class CommentList extends Component{
 			})
 		}
 		return(
-			<ul>{list}</ul>
+			<ReactCSSTransitionGroup transitionName="comments-lists"
+				transitionEnterTimeout={500} transitionLeaveTimeout={300}
+				transitionAppear={true} transitionAppearTimeout={500}
+				component="ul">
+					{list}
+			</ReactCSSTransitionGroup>
 		)
 	}
 }
@@ -91,6 +97,7 @@ class CommentsBox extends Component{
 		}
 		this.props.callBackParent(data)
 		event.target.elements[0].value ='';
+		event.target.elements[1].value ='';
 	}
 
 	render(){
@@ -107,7 +114,6 @@ class CommentsBox extends Component{
 						<textarea className="write-con"></textarea>
 						<input type="submit" value="提交" className='sub-btn'/>
 					</div>
-					
 				</form>
 			</div>
 		)
