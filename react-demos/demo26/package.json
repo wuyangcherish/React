@@ -1,0 +1,33 @@
+{
+  "name": "demo26",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha --compilers js:babel-core/register --require ./test/setup.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.13.2",
+    "babel-eslint": "^4.1.3",
+    "babel-loader": "^6.0.1",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.0.15",
+    "babel-preset-react": "^6.0.15",
+    "babel-preset-stage-0": "^6.0.15",
+    "jsdom": "^9.5.0",
+    "open-browser-webpack-plugin": "^0.0.2",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-hot-loader": "^1.3.0",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
+    "react-addons-test-utils": "^15.3.2"
+  }
+}
